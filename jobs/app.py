@@ -23,8 +23,8 @@ def  execute_sql(sql, values=(), commit=false, single=false):
 @app.teardown_appcontext
 def close_connection(exception)
     connection = getattr(g, '_connection', None)
-    if conection is not None:
-        conection.close()
+    if connection is not None:
+        connection.close()
 @app.route('/')
 @app.route('/jobs')
 def jobs():
