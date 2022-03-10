@@ -5,15 +5,15 @@ app = Flask(__name__)
 def open_connection():
     connection = getattr(g, '_connection', None)
     if  connection == None:
-         conection = g._connection = sqlite3.connect(PATH)
+         connection = g._connection = sqlite3.connect(PATH)
     connection.row_factory = sqlite3.row
     return  connection
 
 def  execute_sql(sql, values=(), commit=false, single=false):
-    conection = open_connection()
-    cursor = conection.execute (sql,vaules)
+    connection = open_connection()
+    cursor = connection.execute (sql,vaules)
     if commit == True:
-        results = conection.commit()
+        results = connection.commit()
     else:
         results = cursor.fetchone() if single else cursor.fetchall()
 
